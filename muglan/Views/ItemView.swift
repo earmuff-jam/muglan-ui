@@ -31,7 +31,8 @@ struct ItemView: View {
             }label: {
                 Image(systemName: job.isPublished ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-            }.sheet(isPresented: $viewModel.showingSelectedJobViewModel, content: {
+            }
+            .sheet(isPresented: $viewModel.showingSelectedJobViewModel, content: {
                 JobDetailsView(newPostPresented: $viewModel.showingSelectedJobViewModel, job: job)
             })
         }

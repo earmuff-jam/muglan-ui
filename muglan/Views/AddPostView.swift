@@ -51,10 +51,11 @@ struct AddPostView: View {
                         newPostPresented = false
                     } else {
                         viewModel.showAlert = true
+                        viewModel.errorMessage = "All fields are required or did you select an earlier date? "
                     }
                 }
                 .alert(isPresented: $viewModel.showAlert) {
-                    Alert(title: Text("Error"), message: Text("All fields are required or did you select an earlier date? ") )
+                    Alert(title: Text("Error"), message: Text(viewModel.errorMessage) )
                 }
             }
         }

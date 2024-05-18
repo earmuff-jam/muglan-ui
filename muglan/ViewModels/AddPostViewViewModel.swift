@@ -26,6 +26,7 @@ class AddPostViewViewModel: ObservableObject {
     @Published var salary_is_negotiable = false
     @Published var salary_is_hourly = false
     
+    @Published var creatorID = ""
     @Published var contact_email_address = ""
     @Published var contact_phone_number = ""
     
@@ -59,7 +60,7 @@ class AddPostViewViewModel: ObservableObject {
             salary_is_negotiable: salary_is_negotiable,
             salary_is_hourly: salary_is_hourly,
             zipCode: zipcode,
-            creator_id: userID,
+            creator_id: nil,
             creator_email_address: contact_email_address,
             creator_phone_number: contact_phone_number,
             dueDate: dueDate.timeIntervalSince1970,
@@ -126,7 +127,9 @@ class AddPostViewViewModel: ObservableObject {
         guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !street_address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-              !city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+              !city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !contact_email_address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !contact_phone_number.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                 else {
                     return false
                 }
@@ -138,7 +141,24 @@ class AddPostViewViewModel: ObservableObject {
         return true
     }
     
+    
+    // only creators can edit
+    func canEdit(creatorID: String?) -> Bool {
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return false
+        }
+        
+        guard let creatorID = creatorID, creatorID == userID else {
+               return false
+           }
+        return true
+        
+    }
+    
+    
     var canUpdate: Bool {
+        
         
         guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,

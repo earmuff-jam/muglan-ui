@@ -20,7 +20,7 @@ struct Job: Codable, Identifiable {
     let salary_is_negotiable: Bool
     let salary_is_hourly: Bool
     let zipCode: String
-    let creator_id: String
+    let creator_id: String?
     let creator_email_address: String
     let creator_phone_number: String
     let dueDate: TimeInterval

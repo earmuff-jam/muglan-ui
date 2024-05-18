@@ -12,42 +12,47 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewViewModel()
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
                 HeaderView(title: "Muglan", subtitle: "Helping you with your quest for jobs", angleOfRotation: 15, backgroundColor: .pink)
-            
-                // login form component
-                Form {
-                    TextField("Email Address", text: $viewModel.email_address_text)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                        .autocorrectionDisabled()
-                        .autocapitalization(.none)
-                        .padding(10)
-                    
-                    SecureField("Password", text: $viewModel.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                        .autocorrectionDisabled()
-                        .autocapitalization(.none)
-                        .padding(10)
                 
-                    MgButton(title: "Login", backgroundColor: .blue) {
-                        viewModel.login()
-                    }.padding(10)
-                
-                    if !viewModel.errorMessage.isEmpty {
-                        Text(viewModel.errorMessage).foregroundColor(.red)
+                ScrollView {
+                    VStack(spacing: 10) {
+                        TextField("Email Address", text: $viewModel.email_address_text)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .autocorrectionDisabled()
+                            .autocapitalization(.none)
+                            .padding()
+                        
+                        SecureField("Password", text: $viewModel.password)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .autocorrectionDisabled()
+                            .autocapitalization(.none)
+                            .padding()
+                        
+                        MgButton(title: "Login", backgroundColor: .blue) {
+                            viewModel.login()
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 44) // Ensure the button expands to full width
+                        .padding(.horizontal)
+                        
+                        if !viewModel.errorMessage.isEmpty {
+                            Text(viewModel.errorMessage).foregroundColor(.red)
+                                .padding(.horizontal)
+                        }
+                        
+                        VStack {
+                            Text("Don't have an account?")
+                            NavigationLink("Register", destination: SignupView())
+                        }
+                        .padding(.top, 20)
+                        .padding(.bottom, 50)
                     }
-                    
-                }.offset(y: -60)
-                VStack {
-                    Text("Don't have an account?")
-                    NavigationLink("Register", destination: SignupView())
-                    .padding(.bottom, 50)
+                    .padding(.horizontal)
                 }
-                
-                
-                Spacer()
+                .offset(y: -20)
             }
+            .edgesIgnoringSafeArea(.top)
         }
     }
 }

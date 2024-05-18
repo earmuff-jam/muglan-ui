@@ -7,20 +7,32 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 struct PostListView: View {
     
     @StateObject var viewModel = PostListViewViewModel()
-    @FirestoreQuery var jobs: [Job]
+    @FirestoreQuery var allJobs: [Job]
     
     init() {
-        self._jobs = FirestoreQuery(collectionPath: "jobs")
+        self._allJobs = FirestoreQuery(collectionPath: "jobs")
+    }
+    
+    /**
+    Jobs are required to be published. Unpublished jobs are jobs that are missing key details such as email address or phone number. Jobs that are not published but created by the selected user is also displayed so that they can modify the job and make it publishable.
+     */
+    var sortedJobs: [Job] {
+        let creator = Auth.auth().currentUser?.uid ?? ""
+        let publishedJobs = allJobs.filter{ $0.isPublished }
+        let unpublishedJobs = allJobs.filter { !$0.isPublished }
+        let unpublishedJobsCreatedByUser = unpublishedJobs.filter { $0.creator_id == creator}
+        return publishedJobs + unpublishedJobsCreatedByUser
     }
     
     var body: some View {
         NavigationView {
             VStack {
-                List(jobs) { job in
+                List(sortedJobs) { job in
                     ItemView(job: job)
                         .swipeActions {
                             Button("Delete") {
