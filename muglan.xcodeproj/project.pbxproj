@@ -39,6 +39,9 @@
 		DF4DB6042BF7AAC3003FA949 /* MgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB6032BF7AAC3003FA949 /* MgButton.swift */; };
 		DF4DB6062BF7B6E3003FA949 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB6052BF7B6E3003FA949 /* Extensions.swift */; };
 		DF55E4E22BF85A64000633BF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF55E4E12BF85A64000633BF /* Launch Screen.storyboard */; };
+		DF55E4E42BF8E56D000633BF /* SearchAndFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55E4E32BF8E56D000633BF /* SearchAndFilter.swift */; };
+		DF55E4E62BF907DE000633BF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55E4E52BF907DE000633BF /* SearchView.swift */; };
+		DF55E4EA2BF93613000633BF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55E4E92BF93613000633BF /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		DF4DB6032BF7AAC3003FA949 /* MgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MgButton.swift; sourceTree = "<group>"; };
 		DF4DB6052BF7B6E3003FA949 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DF55E4E12BF85A64000633BF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		DF55E4E32BF8E56D000633BF /* SearchAndFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAndFilter.swift; sourceTree = "<group>"; };
+		DF55E4E52BF907DE000633BF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		DF55E4E92BF93613000633BF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,9 @@
 				DF4DB5EB2BF797AC003FA949 /* ItemView.swift */,
 				DF4DB6012BF79DCB003FA949 /* HeaderView.swift */,
 				DF4DB6032BF7AAC3003FA949 /* MgButton.swift */,
+				DF55E4E32BF8E56D000633BF /* SearchAndFilter.swift */,
+				DF55E4E52BF907DE000633BF /* SearchView.swift */,
+				DF55E4E92BF93613000633BF /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,9 +380,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF55E4E42BF8E56D000633BF /* SearchAndFilter.swift in Sources */,
 				DF4DB5E22BF796FD003FA949 /* SignupView.swift in Sources */,
 				DF4DB6022BF79DCB003FA949 /* HeaderView.swift in Sources */,
 				DF4DB5F02BF79856003FA949 /* Post.swift in Sources */,
+				DF55E4EA2BF93613000633BF /* MailView.swift in Sources */,
+				DF55E4E62BF907DE000633BF /* SearchView.swift in Sources */,
 				DF4DB5F22BF798AF003FA949 /* MainViewViewModel.swift in Sources */,
 				DF4DB5E02BF796F3003FA949 /* LoginView.swift in Sources */,
 				DF4DB5AB2BF79058003FA949 /* MainView.swift in Sources */,

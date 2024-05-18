@@ -1,60 +1,70 @@
-//
-//  PostListView.swift
-//  muglan
-//
-//  Created by Mohit Paudyal on 5/17/24.
-//
-
 import SwiftUI
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
 struct PostListView: View {
     
+    @State private var showSearchView = false
+    @State private var showMailView = false
+    @State private var title = ""
+    @State private var emailRecipient = ""
     @StateObject var viewModel = PostListViewViewModel()
-    @FirestoreQuery var allJobs: [Job]
-    
-    init() {
-        self._allJobs = FirestoreQuery(collectionPath: "jobs")
-    }
-    
-    /**
-    Jobs are required to be published. Unpublished jobs are jobs that are missing key details such as email address or phone number. Jobs that are not published but created by the selected user is also displayed so that they can modify the job and make it publishable.
-     */
-    var sortedJobs: [Job] {
-        let creator = Auth.auth().currentUser?.uid ?? ""
-        let publishedJobs = allJobs.filter{ $0.isPublished }
-        let unpublishedJobs = allJobs.filter { !$0.isPublished }
-        let unpublishedJobsCreatedByUser = unpublishedJobs.filter { $0.creator_id == creator}
-        return publishedJobs + unpublishedJobsCreatedByUser
-    }
     
     var body: some View {
         NavigationView {
-            VStack {
-                List(sortedJobs) { job in
-                    ItemView(job: job)
-                        .swipeActions {
-                            Button("Delete") {
-                                viewModel.delete(id: job.id)
+            if showSearchView {
+                SearchView(show: $showSearchView)
+            } else {
+                VStack {
+                    SearchAndFilter()
+                        .onTapGesture {
+                            withAnimation(.snappy) {
+                                showSearchView.toggle()
                             }
-                            .tint(.red)
                         }
+                    List(viewModel.sortedJobs) { job in
+                        ItemView(job: job)
+                            .swipeActions {
+                                
+                                if job.creator_id == Auth.auth().currentUser?.uid {
+                                    Button("Delete") {
+                                        viewModel.delete(id: job.id)
+                                    }
+                                    .tint(.red)
+                                } else {
+                                    Button("Apply") {
+                                        
+                                        if viewModel.canSendMail() {
+                                            print("wath")
+                                            viewModel.sendEmail(title: job.title, to: job.creator_email_address)
+
+                                        } else {
+                                            viewModel.showErrorInSendMessage = true
+                                        }
+                                    }
+                                    .tint(.green)
+                                }
+                                
+                            }
+                    }
+                    .listStyle(PlainListStyle())
                 }
-                .listStyle(PlainListStyle())
-            }
-            .navigationTitle("View jobs")
-            .toolbar {
-                Button {
-                    //action
-                    viewModel.showingAddPostViewModel = true
-                } label: {
-                    Image(systemName: "plus")
+                .navigationTitle("View jobs")
+                .toolbar {
+                    Button {
+                        viewModel.showingAddPostViewModel = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
+                .sheet(isPresented: $viewModel.showingAddPostViewModel) {
+                    AddPostView(newPostPresented: $viewModel.showingAddPostViewModel)
+                }
+                .alert(isPresented: $viewModel.showErrorInSendMessage) {
+                       Alert(title: Text("Error"), message: Text("Device cannot send mail."), dismissButton: .default(Text("OK")))
+                   }
+
             }
-            .sheet(isPresented: $viewModel.showingAddPostViewModel, content: {
-                AddPostView(newPostPresented: $viewModel.showingAddPostViewModel)
-            })
         }
     }
 }
