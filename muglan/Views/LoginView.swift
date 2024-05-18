@@ -22,29 +22,26 @@ struct LoginView: View {
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
                         .autocapitalization(.none)
+                        .padding(10)
                     
                     SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
                         .autocapitalization(.none)
-                    
+                        .padding(10)
                 
                     MgButton(title: "Login", backgroundColor: .blue) {
                         viewModel.login()
-                    }
+                    }.padding(10)
                 
                     if !viewModel.errorMessage.isEmpty {
                         Text(viewModel.errorMessage).foregroundColor(.red)
                     }
                     
                 }.offset(y: -60)
-                
-                // register text
-                
                 VStack {
                     Text("Don't have an account?")
                     NavigationLink("Register", destination: SignupView())
-                    
                     .padding(.bottom, 50)
                 }
                 
