@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct SearchAndFilter: View {
+    @Binding var searchInput: String
+    
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("Search for jobs")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                Text("Any jobs")
-                    .font(.caption2)
-                    .foregroundStyle(.gray)
+                if !searchInput.isEmpty {
+                    TextField("Search...", text: $searchInput)
+                        .font(.footnote)
+                        .foregroundColor(.primary)
+                } else {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Search...")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                        Text("Any jobs, location or employment...")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                }
             }
             Spacer()
             
@@ -34,12 +44,12 @@ struct SearchAndFilter: View {
                 .stroke(lineWidth: 0.5)
                 .foregroundStyle(Color(.gray))
                 .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.4), radius: 2)
-                
+            
         }
         .padding()
     }
 }
 
 #Preview {
-    SearchAndFilter()
+    SearchAndFilter(searchInput: .constant(""))
 }

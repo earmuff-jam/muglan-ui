@@ -27,7 +27,7 @@ class SignupViewViewModel: ObservableObject {
         
         // [weak self] ensures a prevention of memory leak
         Auth.auth().createUser(withEmail: email_address_text, password: password, completion: { [weak self] result, error in
-        
+            
             guard let userID = result?.user.uid else {
                 return
             }
@@ -50,23 +50,23 @@ class SignupViewViewModel: ObservableObject {
     
     private func validate() -> Bool {
         errorMessage = ""
-    guard !email_address_text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-          !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-          !username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-          !firstname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-          !lastname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        guard !email_address_text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !firstname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !lastname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else {
-        errorMessage = "Fill in all fields"
+            errorMessage = "Fill in all fields"
             return false
-    }
-    
+        }
+        
         guard email_address_text.contains("@") && email_address_text.contains(".") else {
             errorMessage = "Invalid email address"
-                return false
+            return false
         }
         guard password.count > 6 else {
             errorMessage = "Password length is too short. Try again."
-                return false
+            return false
         }
         
         return true

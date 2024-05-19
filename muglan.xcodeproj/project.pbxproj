@@ -20,7 +20,7 @@
 		DF4DB5DA2BF7927E003FA949 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF4DB5D92BF7927E003FA949 /* GoogleService-Info.plist */; };
 		DF4DB5E02BF796F3003FA949 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5DF2BF796F3003FA949 /* LoginView.swift */; };
 		DF4DB5E22BF796FD003FA949 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E12BF796FD003FA949 /* SignupView.swift */; };
-		DF4DB5E42BF79718003FA949 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E32BF79717003FA949 /* PostListView.swift */; };
+		DF4DB5E42BF79718003FA949 /* JobListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E32BF79717003FA949 /* JobListView.swift */; };
 		DF4DB5E62BF79721003FA949 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E52BF79721003FA949 /* AddPostView.swift */; };
 		DF4DB5E82BF79728003FA949 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E72BF79728003FA949 /* ProfileView.swift */; };
 		DF4DB5EA2BF79733003FA949 /* JobDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5E92BF79733003FA949 /* JobDetailsView.swift */; };
@@ -30,7 +30,7 @@
 		DF4DB5F22BF798AF003FA949 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F12BF798AF003FA949 /* MainViewViewModel.swift */; };
 		DF4DB5F42BF798C0003FA949 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F32BF798C0003FA949 /* LoginViewViewModel.swift */; };
 		DF4DB5F62BF798CB003FA949 /* SignupViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F52BF798CB003FA949 /* SignupViewViewModel.swift */; };
-		DF4DB5F82BF798D8003FA949 /* PostListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F72BF798D8003FA949 /* PostListViewViewModel.swift */; };
+		DF4DB5F82BF798D8003FA949 /* JobListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F72BF798D8003FA949 /* JobListViewModel.swift */; };
 		DF4DB5FA2BF798E5003FA949 /* AddPostViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5F92BF798E5003FA949 /* AddPostViewViewModel.swift */; };
 		DF4DB5FC2BF798F0003FA949 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5FB2BF798F0003FA949 /* ProfileViewViewModel.swift */; };
 		DF4DB5FE2BF798FC003FA949 /* JobDetailsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DB5FD2BF798FC003FA949 /* JobDetailsViewViewModel.swift */; };
@@ -75,7 +75,7 @@
 		DF4DB5D92BF7927E003FA949 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF4DB5DF2BF796F3003FA949 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DF4DB5E12BF796FD003FA949 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-		DF4DB5E32BF79717003FA949 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
+		DF4DB5E32BF79717003FA949 /* JobListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListView.swift; sourceTree = "<group>"; };
 		DF4DB5E52BF79721003FA949 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		DF4DB5E72BF79728003FA949 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DF4DB5E92BF79733003FA949 /* JobDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsView.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		DF4DB5F12BF798AF003FA949 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		DF4DB5F32BF798C0003FA949 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		DF4DB5F52BF798CB003FA949 /* SignupViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewViewModel.swift; sourceTree = "<group>"; };
-		DF4DB5F72BF798D8003FA949 /* PostListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewViewModel.swift; sourceTree = "<group>"; };
+		DF4DB5F72BF798D8003FA949 /* JobListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListViewModel.swift; sourceTree = "<group>"; };
 		DF4DB5F92BF798E5003FA949 /* AddPostViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewViewModel.swift; sourceTree = "<group>"; };
 		DF4DB5FB2BF798F0003FA949 /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		DF4DB5FD2BF798FC003FA949 /* JobDetailsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewViewModel.swift; sourceTree = "<group>"; };
@@ -152,7 +152,6 @@
 			children = (
 				DF4DB5DE2BF7940E003FA949 /* Other */,
 				DF4DB5DD2BF793FA003FA949 /* Models */,
-				DF4DB5DC2BF793DA003FA949 /* ViewModels */,
 				DF4DB5DB2BF793C9003FA949 /* Views */,
 				DF4DB5AE2BF7905A003FA949 /* Preview Content */,
 			);
@@ -187,36 +186,18 @@
 		DF4DB5DB2BF793C9003FA949 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DF4DB5AA2BF79058003FA949 /* MainView.swift */,
-				DF4DB5DF2BF796F3003FA949 /* LoginView.swift */,
-				DF4DB5E12BF796FD003FA949 /* SignupView.swift */,
-				DF4DB5E32BF79717003FA949 /* PostListView.swift */,
-				DF4DB5E52BF79721003FA949 /* AddPostView.swift */,
-				DF4DB5E72BF79728003FA949 /* ProfileView.swift */,
-				DF4DB5E92BF79733003FA949 /* JobDetailsView.swift */,
-				DF4DB5EB2BF797AC003FA949 /* ItemView.swift */,
-				DF4DB6012BF79DCB003FA949 /* HeaderView.swift */,
-				DF4DB6032BF7AAC3003FA949 /* MgButton.swift */,
-				DF55E4E32BF8E56D000633BF /* SearchAndFilter.swift */,
-				DF55E4E52BF907DE000633BF /* SearchView.swift */,
-				DF55E4E92BF93613000633BF /* MailView.swift */,
+				DF55E4F52BFA2BA3000633BF /* MailView */,
+				DF55E4F42BFA2B97000633BF /* Common */,
+				DF55E4F32BFA2B7C000633BF /* PostingItemView */,
+				DF55E4F22BFA2B1E000633BF /* JobPostingDetailsView */,
+				DF55E4F02BFA2B01000633BF /* ProfileView */,
+				DF55E4EF2BFA2AE8000633BF /* AddJobPostingView */,
+				DF55E4EE2BFA2ACF000633BF /* ListingsView */,
+				DF55E4ED2BFA2AB7000633BF /* SignupView */,
+				DF55E4EC2BFA2AA0000633BF /* LoginView */,
+				DF55E4EB2BFA2A80000633BF /* MainView */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DF4DB5DC2BF793DA003FA949 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DF4DB5F12BF798AF003FA949 /* MainViewViewModel.swift */,
-				DF4DB5F32BF798C0003FA949 /* LoginViewViewModel.swift */,
-				DF4DB5F52BF798CB003FA949 /* SignupViewViewModel.swift */,
-				DF4DB5F72BF798D8003FA949 /* PostListViewViewModel.swift */,
-				DF4DB5F92BF798E5003FA949 /* AddPostViewViewModel.swift */,
-				DF4DB5FB2BF798F0003FA949 /* ProfileViewViewModel.swift */,
-				DF4DB5FD2BF798FC003FA949 /* JobDetailsViewViewModel.swift */,
-				DF4DB5FF2BF7990F003FA949 /* ItemViewViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DF4DB5DD2BF793FA003FA949 /* Models */ = {
@@ -238,6 +219,97 @@
 				DF55E4E12BF85A64000633BF /* Launch Screen.storyboard */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		DF55E4EB2BFA2A80000633BF /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5F12BF798AF003FA949 /* MainViewViewModel.swift */,
+				DF4DB5AA2BF79058003FA949 /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		DF55E4EC2BFA2AA0000633BF /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5F32BF798C0003FA949 /* LoginViewViewModel.swift */,
+				DF4DB5DF2BF796F3003FA949 /* LoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		DF55E4ED2BFA2AB7000633BF /* SignupView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5F52BF798CB003FA949 /* SignupViewViewModel.swift */,
+				DF4DB5E12BF796FD003FA949 /* SignupView.swift */,
+			);
+			path = SignupView;
+			sourceTree = "<group>";
+		};
+		DF55E4EE2BFA2ACF000633BF /* ListingsView */ = {
+			isa = PBXGroup;
+			children = (
+				DF55E4E32BF8E56D000633BF /* SearchAndFilter.swift */,
+				DF55E4E52BF907DE000633BF /* SearchView.swift */,
+				DF4DB5F72BF798D8003FA949 /* JobListViewModel.swift */,
+				DF4DB5E32BF79717003FA949 /* JobListView.swift */,
+			);
+			path = ListingsView;
+			sourceTree = "<group>";
+		};
+		DF55E4EF2BFA2AE8000633BF /* AddJobPostingView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5F92BF798E5003FA949 /* AddPostViewViewModel.swift */,
+				DF4DB5E52BF79721003FA949 /* AddPostView.swift */,
+			);
+			path = AddJobPostingView;
+			sourceTree = "<group>";
+		};
+		DF55E4F02BFA2B01000633BF /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5FB2BF798F0003FA949 /* ProfileViewViewModel.swift */,
+				DF4DB5E72BF79728003FA949 /* ProfileView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		DF55E4F22BFA2B1E000633BF /* JobPostingDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5FD2BF798FC003FA949 /* JobDetailsViewViewModel.swift */,
+				DF4DB5E92BF79733003FA949 /* JobDetailsView.swift */,
+			);
+			path = JobPostingDetailsView;
+			sourceTree = "<group>";
+		};
+		DF55E4F32BFA2B7C000633BF /* PostingItemView */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB5FF2BF7990F003FA949 /* ItemViewViewModel.swift */,
+				DF4DB5EB2BF797AC003FA949 /* ItemView.swift */,
+			);
+			path = PostingItemView;
+			sourceTree = "<group>";
+		};
+		DF55E4F42BFA2B97000633BF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DB6012BF79DCB003FA949 /* HeaderView.swift */,
+				DF4DB6032BF7AAC3003FA949 /* MgButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DF55E4F52BFA2BA3000633BF /* MailView */ = {
+			isa = PBXGroup;
+			children = (
+				DF55E4E92BF93613000633BF /* MailView.swift */,
+			);
+			path = MailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,13 +470,13 @@
 				DF4DB5F62BF798CB003FA949 /* SignupViewViewModel.swift in Sources */,
 				DF4DB5E82BF79728003FA949 /* ProfileView.swift in Sources */,
 				DF4DB5FA2BF798E5003FA949 /* AddPostViewViewModel.swift in Sources */,
-				DF4DB5F82BF798D8003FA949 /* PostListViewViewModel.swift in Sources */,
+				DF4DB5F82BF798D8003FA949 /* JobListViewModel.swift in Sources */,
 				DF4DB5EC2BF797AC003FA949 /* ItemView.swift in Sources */,
 				DF4DB6042BF7AAC3003FA949 /* MgButton.swift in Sources */,
 				DF4DB5FC2BF798F0003FA949 /* ProfileViewViewModel.swift in Sources */,
 				DF4DB5EE2BF7984E003FA949 /* User.swift in Sources */,
 				DF4DB6002BF7990F003FA949 /* ItemViewViewModel.swift in Sources */,
-				DF4DB5E42BF79718003FA949 /* PostListView.swift in Sources */,
+				DF4DB5E42BF79718003FA949 /* JobListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

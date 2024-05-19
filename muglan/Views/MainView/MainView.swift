@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserID.isEmpty {
             // if the user is signed in
-                accountView
+            accountView
         } else {
             LoginView()
         }
@@ -24,7 +24,7 @@ struct MainView: View {
     @ViewBuilder
     var accountView: some View {
         TabView{
-          PostListView()
+            JobListView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }

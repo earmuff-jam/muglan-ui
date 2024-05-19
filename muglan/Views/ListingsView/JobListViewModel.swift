@@ -5,13 +5,18 @@ import FirebaseAuth
 import Foundation
 
 // PostList for the list of items that are displayed
-class PostListViewViewModel: ObservableObject {
+class JobListViewModel: ObservableObject {
     
     @Published var showingAddPostViewModel = false
     @Published var showErrorInSendMessage = false
     @Published var searchInput: String = ""
     @Published var showMailView = false
-    @Published var allJobs: [Job] = []
+    @Published var allJobs: [Job] = [] {
+        didSet {
+            sortedJobs = sortExistingJobs()
+        }
+    }
+    var sortedJobs: [Job] = []
     
     private var db = Firestore.firestore()
     
@@ -44,7 +49,7 @@ class PostListViewViewModel: ObservableObject {
      Jobs are required to be published. Unpublished jobs are jobs that are missing key details such as email address or phone number.
      Jobs that are not published but created by the selected user is also displayed so that they can modify the job and make it publishable.
      */
-    var sortedJobs: [Job] {
+    func sortExistingJobs() -> [Job] {
         let creator = Auth.auth().currentUser?.uid ?? ""
         let publishedJobs = allJobs.filter { $0.isPublished }
         let unpublishedJobs = allJobs.filter { !$0.isPublished }

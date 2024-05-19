@@ -2,13 +2,13 @@ import SwiftUI
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-struct PostListView: View {
+struct JobListView: View {
     
     @State private var showSearchView = false
     @State private var showMailView = false
     @State private var title = ""
     @State private var emailRecipient = ""
-    @StateObject var viewModel = PostListViewViewModel()
+    @StateObject var viewModel = JobListViewModel()
     
     var body: some View {
         NavigationView {
@@ -16,38 +16,39 @@ struct PostListView: View {
                 SearchView(show: $showSearchView, searchInput: $viewModel.searchInput, searchJob: viewModel.updateJobListingBasedOnSearchFilter)
             } else {
                 VStack {
-                    SearchAndFilter()
+                    SearchAndFilter(searchInput: $viewModel.searchInput)
                         .onTapGesture {
                             withAnimation(.snappy) {
                                 showSearchView.toggle()
                             }
                         }
-                    List(viewModel.sortedJobs) { job in
-                        ItemView(job: job)
-                            .swipeActions {
-                                
-                                if job.creator_id == Auth.auth().currentUser?.uid {
-                                    Button("Delete") {
-                                        viewModel.delete(id: job.id)
-                                    }
-                                    .tint(.red)
-                                } else {
-                                    Button("Apply") {
-                                        
-                                        if viewModel.canSendMail() {
-                                            print("wath")
-                                            viewModel.sendEmail(title: job.title, to: job.creator_email_address)
-                                            
-                                        } else {
-                                            viewModel.showErrorInSendMessage = true
+                    if viewModel.sortedJobs.isEmpty {
+                        Text("No matching results found...")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                    } else {
+                        List(viewModel.sortedJobs) { job in
+                            ItemView(job: job)
+                                .swipeActions {
+                                    if job.creator_id == Auth.auth().currentUser?.uid {
+                                        Button("Delete") {
+                                            viewModel.delete(id: job.id)
                                         }
+                                        .tint(.red)
+                                    } else {
+                                        Button("Apply") {
+                                            if viewModel.canSendMail() {
+                                                viewModel.sendEmail(title: job.title, to: job.creator_email_address)
+                                            } else {
+                                                viewModel.showErrorInSendMessage = true
+                                            }
+                                        }
+                                        .tint(.green)
                                     }
-                                    .tint(.green)
                                 }
-                                
-                            }
+                        }
+                        .listStyle(PlainListStyle())
                     }
-                    .listStyle(PlainListStyle())
                 }
                 .navigationTitle("View jobs")
                 .toolbar {
@@ -70,5 +71,5 @@ struct PostListView: View {
 }
 
 #Preview {
-    PostListView()
+    JobListView()
 }
