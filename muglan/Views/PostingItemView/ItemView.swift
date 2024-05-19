@@ -12,6 +12,7 @@ struct ItemView: View {
     
     @StateObject var viewModel = ItemViewViewModel()
     let job: Job
+    var jobListViewModel: JobListViewModel
     
     var body: some View {
         HStack {
@@ -32,9 +33,9 @@ struct ItemView: View {
                 Image(systemName: job.isPublished ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             }
-            .sheet(isPresented: $viewModel.showingSelectedJobViewModel, content: {
-                JobDetailsView(newPostPresented: $viewModel.showingSelectedJobViewModel, job: job)
-            })
+            .sheet(isPresented: $viewModel.showingSelectedJobViewModel) {
+                            JobDetailsView(newPostPresented: $viewModel.showingSelectedJobViewModel, job: job, jobListViewModel: jobListViewModel)
+                        }
         }
     }
 }
@@ -57,6 +58,6 @@ struct ItemView: View {
                        creator_phone_number: "creator phone number",
                        dueDate: Date().timeIntervalSince1970,
                        createdDate: Date().timeIntervalSince1970,
-                       isPublished: false)
+                       isPublished: false), jobListViewModel: JobListViewModel()
     )
 }

@@ -28,7 +28,7 @@ struct JobListView: View {
                             .font(.headline)
                     } else {
                         List(viewModel.sortedJobs) { job in
-                            ItemView(job: job)
+                            ItemView(job: job, jobListViewModel: viewModel)
                                 .swipeActions {
                                     if job.creator_id == Auth.auth().currentUser?.uid {
                                         Button("Delete") {
@@ -59,7 +59,7 @@ struct JobListView: View {
                     }
                 }
                 .sheet(isPresented: $viewModel.showingAddPostViewModel) {
-                    AddPostView(newPostPresented: $viewModel.showingAddPostViewModel, addJobCompletion: {})
+                    AddPostView(newPostPresented: $viewModel.showingAddPostViewModel, jobListViewModel: viewModel)
                 }
                 .alert(isPresented: $viewModel.showErrorInSendMessage) {
                     Alert(title: Text("Error"), message: Text("Device cannot send mail."), dismissButton: .default(Text("OK")))

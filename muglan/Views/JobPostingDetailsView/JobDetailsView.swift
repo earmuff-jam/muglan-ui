@@ -12,10 +12,12 @@ struct JobDetailsView: View {
     @StateObject var viewModel = AddPostViewViewModel()
     @Binding var newPostPresented: Bool
     let job: Job
+    let jbListViewModel: JobListViewModel
     
-    init(newPostPresented: Binding<Bool>, job: Job) {
+    init(newPostPresented: Binding<Bool>, job: Job, jobListViewModel: JobListViewModel) {
         self._newPostPresented = newPostPresented
         self.job = job
+        self.jbListViewModel = jobListViewModel
         _viewModel = StateObject(wrappedValue: AddPostViewViewModel())
     }
     
@@ -70,21 +72,23 @@ struct JobDetailsView: View {
                 
                 Button(action: {
                     if !viewModel.canEdit(creatorID: viewModel.creatorID) {
-                           viewModel.showAlert = true
-                           viewModel.errorMessage = "Creator can only update job. Is this a mistake? "
-                       } else if viewModel.canUpdate {
-                           viewModel.update(id: job.id)
-                           newPostPresented = false
-                       } else {
-                           viewModel.showAlert = true
-                           viewModel.errorMessage = "All fields are required or did you select an earlier date ? "
-                       }
+                        viewModel.showAlert = true
+                        viewModel.errorMessage = "Creator can only update job. Is this a mistake? "
+                    } else if viewModel.canUpdate {
+                        viewModel.update(id: job.id)
+                        newPostPresented = false
+                        jbListViewModel.retrieveAllExistingJobsFromDb()
+                    } else {
+                        viewModel.showAlert = true
+                        viewModel.errorMessage = "All fields are required or did you select an earlier date ? "
+                    }
                 }) {
                     Text("Save")
                         .padding()
                         .background(Color.pink)
                         .foregroundColor(.white)
                         .cornerRadius(8)
+                        .disabled(viewModel.canUpdate)
                 }
                 .alert(isPresented: $viewModel.showAlert) {
                     Alert(title: Text("Error"), message: Text(viewModel.errorMessage) )
@@ -132,5 +136,5 @@ struct JobDetailsView: View {
         dueDate: Date().timeIntervalSince1970,
         createdDate: Date().timeIntervalSince1970,
         isPublished: false
-    ))
+    ), jobListViewModel: JobListViewModel())
 }
