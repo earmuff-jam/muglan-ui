@@ -18,7 +18,8 @@ enum SearchViewOptions {
 struct SearchView: View {
     
     @Binding var show: Bool
-    @State private var searchInput = ""
+    @Binding var searchInput: String
+    var searchJob: (String) -> Void
     @State private var selectedOption: SearchViewOptions = .jobTitle
     
     var body: some View {
@@ -27,8 +28,10 @@ struct SearchView: View {
             HStack {
                 Button {
                     withAnimation(.snappy) {
-                        show.toggle()
-                        
+                        show = false
+                        // reset search and reset filters
+                        searchInput = ""
+                        searchJob("")
                     }
                 } label: {
                     Image(systemName: "xmark.circle")
@@ -63,6 +66,10 @@ struct SearchView: View {
                         
                         TextField("Seach jobs ...", text: $searchInput)
                             .font(.subheadline)
+                            .onSubmit {
+                                searchJob("job")
+                                show.toggle()
+                            }
                     }
                     .frame(height: 44)
                     .padding(.horizontal)
@@ -99,6 +106,10 @@ struct SearchView: View {
                         
                         TextField("Seach locations ...", text: $searchInput)
                             .font(.subheadline)
+                            .onSubmit {
+                                searchJob("location")
+                                show.toggle()
+                            }
                     }
                     .frame(height: 44)
                     .padding(.horizontal)
@@ -134,6 +145,10 @@ struct SearchView: View {
                         
                         TextField("Seach employment options ...", text: $searchInput)
                             .font(.subheadline)
+                            .onSubmit {
+                                searchJob("employment")
+                                show.toggle()
+                            }
                     }
                     .frame(height: 44)
                     .padding(.horizontal)
@@ -163,9 +178,9 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView(show: .constant(false))
+    SearchView(show: .constant(false), searchInput: .constant(""), searchJob: { searchText in
+      })
 }
-
 
 /**
  Collapsable view modifier allows multiple views to use the same modifier

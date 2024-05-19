@@ -13,7 +13,7 @@ struct PostListView: View {
     var body: some View {
         NavigationView {
             if showSearchView {
-                SearchView(show: $showSearchView)
+                SearchView(show: $showSearchView, searchInput: $viewModel.searchInput, searchJob: viewModel.updateJobListingBasedOnSearchFilter)
             } else {
                 VStack {
                     SearchAndFilter()
@@ -37,7 +37,7 @@ struct PostListView: View {
                                         if viewModel.canSendMail() {
                                             print("wath")
                                             viewModel.sendEmail(title: job.title, to: job.creator_email_address)
-
+                                            
                                         } else {
                                             viewModel.showErrorInSendMessage = true
                                         }
@@ -58,12 +58,12 @@ struct PostListView: View {
                     }
                 }
                 .sheet(isPresented: $viewModel.showingAddPostViewModel) {
-                    AddPostView(newPostPresented: $viewModel.showingAddPostViewModel)
+                    AddPostView(newPostPresented: $viewModel.showingAddPostViewModel, addJobCompletion: {})
                 }
                 .alert(isPresented: $viewModel.showErrorInSendMessage) {
-                       Alert(title: Text("Error"), message: Text("Device cannot send mail."), dismissButton: .default(Text("OK")))
-                   }
-
+                    Alert(title: Text("Error"), message: Text("Device cannot send mail."), dismissButton: .default(Text("OK")))
+                }
+                
             }
         }
     }

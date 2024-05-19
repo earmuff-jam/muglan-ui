@@ -6,17 +6,23 @@ import Foundation
 
 // PostList for the list of items that are displayed
 class PostListViewViewModel: ObservableObject {
+    
     @Published var showingAddPostViewModel = false
     @Published var showErrorInSendMessage = false
+    @Published var searchInput: String = ""
     @Published var showMailView = false
     @Published var allJobs: [Job] = []
     
-    init() {
-        fetchJobs()
-    }
+    private var db = Firestore.firestore()
     
-    func fetchJobs() {
-        let db = Firestore.firestore()
+    init() {
+        retrieveAllExistingJobsFromDb()
+    }
+
+    /**
+    retrieve the list of job that are available from the database
+     */
+    func retrieveAllExistingJobsFromDb() {
         db.collection("jobs").getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching jobs: \(error.localizedDescription)")
@@ -47,10 +53,57 @@ class PostListViewViewModel: ObservableObject {
     }
     
     /**
+     search for the selected item
+     */
+    func updateJobListingBasedOnSearchFilter(category: String) {
+        if category == "job" {
+            let filteredListings = allJobs.filter({
+                $0.title.lowercased() == searchInput.lowercased()
+            })
+
+            self.allJobs = filteredListings.isEmpty ? allJobs : filteredListings
+            return
+        }
+        else if category == "location" {
+            let filteredListings = allJobs.filter({
+                $0.city.lowercased() == searchInput.lowercased() ||
+                $0.state.lowercased() == searchInput.lowercased()
+            })
+            
+            self.allJobs = filteredListings.isEmpty ? allJobs : filteredListings
+            return
+        } else if category == "employment" {
+            let filteredListings = allJobs.filter({
+                $0.employment_type.lowercased() == searchInput.lowercased() ||
+                $0.employment_type.lowercased() == searchInput.lowercased()
+            })
+            
+            self.allJobs = filteredListings.isEmpty ? allJobs : filteredListings
+            return
+        } else {
+            retrieveAllExistingJobsFromDb()
+        }
+    }
+    
+    
+    /**
+     Add job lets the audience add a new job and update the ui accordingly. Once the user adds a job, it would be displayed in the list 
+     */
+    func addJob(_ job: Job, completion: @escaping () -> Void) {
+        db.collection("jobs").addDocument(data: job.asDictionary()) { error in
+            if let error = error {
+                print("error adding job: \(error.localizedDescription)")
+                return
+            }
+            self.allJobs.append(job)
+            completion()
+        }
+    }
+    
+    /**
      Delete a select job. Only creators can delete the job
      */
     func delete(id: String) {
-        let db = Firestore.firestore()
         db.collection("jobs").document(id).delete { error in
             if let error = error {
                 print("Error deleting job: \(error.localizedDescription)")

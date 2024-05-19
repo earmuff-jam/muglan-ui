@@ -11,6 +11,7 @@ struct AddPostView: View {
     
     @StateObject var viewModel = AddPostViewViewModel()
     @Binding var newPostPresented: Bool
+    var addJobCompletion: () -> Void
     
     var body: some View {
         VStack{
@@ -26,13 +27,13 @@ struct AddPostView: View {
                 
                 TextField("Description", text: $viewModel.description)
                     .textFieldStyle(DefaultTextFieldStyle())
-
+                
                 TextField("Street Address", text: $viewModel.street_address)
                     .textFieldStyle(DefaultTextFieldStyle())
-
+                
                 TextField("City", text: $viewModel.city)
                     .textFieldStyle(DefaultTextFieldStyle())
-               
+                
                 TextField("Zipcode", text: $viewModel.zipcode)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
@@ -49,6 +50,7 @@ struct AddPostView: View {
                     if viewModel.canSave {
                         viewModel.save()
                         newPostPresented = false
+                        addJobCompletion()
                     } else {
                         viewModel.showAlert = true
                         viewModel.errorMessage = "All fields are required or did you select an earlier date? "
@@ -63,5 +65,5 @@ struct AddPostView: View {
 }
 
 #Preview {
-    AddPostView(newPostPresented: Binding(get: {return true}, set: { _ in}))
+    AddPostView(newPostPresented: Binding(get: {return true}, set: { _ in} ), addJobCompletion: {})
 }
