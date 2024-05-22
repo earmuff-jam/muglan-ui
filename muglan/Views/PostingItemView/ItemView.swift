@@ -27,15 +27,27 @@ struct ItemView: View {
             Spacer()
             
             Button{
-                //action
                 viewModel.showingSelectedJobViewModel = true
             }label: {
-                Image(systemName: job.isPublished ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                Group {
+                    if !job.isPublished && jobListViewModel.userCreatedJob(job) {
+                        Image(systemName: "pencil.and.list.clipboard")
+                            .foregroundColor(.blue)
+                    } else if jobListViewModel.userCreatedJob(job) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
+                    } else if job.isPublished {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.blue)
+                    } else {
+                        Image(systemName: "pencil.and.list.clipboard")
+                            .foregroundColor(.blue)
+                    }
+                }
             }
             .sheet(isPresented: $viewModel.showingSelectedJobViewModel) {
-                            JobDetailsView(newPostPresented: $viewModel.showingSelectedJobViewModel, job: job, jobListViewModel: jobListViewModel)
-                        }
+                JobDetailsView(newPostPresented: $viewModel.showingSelectedJobViewModel, job: job, jobListViewModel: jobListViewModel)
+            }
         }
     }
 }

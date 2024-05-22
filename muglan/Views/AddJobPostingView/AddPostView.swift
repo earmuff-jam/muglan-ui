@@ -44,13 +44,13 @@ struct AddPostView: View {
                     if viewModel.canSave {
                         viewModel.save()
                         newPostPresented = false
-                        jobListViewModel.retrieveAllExistingJobsFromDb()
+                        jobListViewModel.retrieveAllPublishedJobs()
                     } else {
                         viewModel.showAlert = true
                         viewModel.errorMessage = "All fields are required or did you select an earlier date? "
                     }
                 }
-                .frame(maxWidth: .infinity, minHeight: 44) // Ensure the button expands to full width
+                .frame(maxWidth: .infinity, minHeight: 36) // Ensure the button expands to full width
                 .padding(.horizontal)
                 .disabled(!viewModel.canSave)
             }

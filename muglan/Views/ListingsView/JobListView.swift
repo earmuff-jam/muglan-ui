@@ -22,12 +22,12 @@ struct JobListView: View {
                                 showSearchView.toggle()
                             }
                         }
-                    if viewModel.sortedJobs.isEmpty {
+                    if viewModel.publishedJobs.isEmpty {
                         Text("No matching results found...")
                             .foregroundColor(.gray)
                             .font(.headline)
                     } else {
-                        List(viewModel.sortedJobs) { job in
+                        List(viewModel.publishedJobs) { job in
                             ItemView(job: job, jobListViewModel: viewModel)
                                 .swipeActions {
                                     if job.creator_id == Auth.auth().currentUser?.uid {
@@ -64,7 +64,6 @@ struct JobListView: View {
                 .alert(isPresented: $viewModel.showErrorInSendMessage) {
                     Alert(title: Text("Error"), message: Text("Device cannot send mail."), dismissButton: .default(Text("OK")))
                 }
-                
             }
         }
     }
