@@ -1,7 +1,9 @@
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 export default function App() {
   return (
-    <Typography> Main App </Typography>
+    <Container maxWidth="sm">
+      <Typography textAlign="center"> Main App </Typography>
+    </Container>
   )
 }
