@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import AddTemplate from "./AddTemplate";
+import AddChore from "./AddChore";
 
 const steps = ["Select Group", "Select Template", "Add chore"];
 
@@ -29,7 +30,7 @@ export default function MobileStepper() {
         items={[]}
       />
     ),
-    3: <Typography> 3</Typography>,
+    3: <AddChore />,
   };
 
   const handleReset = () => setActiveStep(0);

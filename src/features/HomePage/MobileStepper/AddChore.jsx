@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BLANK_CHORE_DETAILS_FORM } from "./constants";
-import { Stack, TextField, Typography } from "@mui/material";
+import AddChoreFormDetails from "./Form/AddChoreFormDetails";
+import AddChoreFormRepeatSettings from "./Form/AddChoreFormRepeatSettings";
+import { Stack } from "@mui/material";
 
 export default function AddChore() {
   const [formData, setFormData] = useState({ ...BLANK_CHORE_DETAILS_FORM });
@@ -63,30 +65,8 @@ export default function AddChore() {
 
   return (
     <Stack spacing={2}>
-      <TextField
-        fullWidth
-        id={formData.name.id}
-        name={formData.name.id}
-        placeholder={formData.name.placeholder}
-        value={formData?.name.value || ""}
-        onChange={handleChange}
-        variant="outlined"
-        size="small"
-        error={Boolean(formData.name["errorMsg"].length)}
-        helperText={formData.name["errorMsg"]}
-      />
-      <TextField
-        fullWidth
-        id={formData.description.id}
-        name={formData.description.id}
-        placeholder={formData.description.placeholder}
-        value={formData?.description.value || ""}
-        onChange={handleChange}
-        variant="outlined"
-        size="small"
-        error={Boolean(formData.description["errorMsg"].length)}
-        helperText={formData.description["errorMsg"]}
-      />
+      <AddChoreFormDetails formData={formData} handleChange={handleChange} />
+      <AddChoreFormRepeatSettings />
     </Stack>
   );
 }
