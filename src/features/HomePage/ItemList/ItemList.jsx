@@ -12,9 +12,10 @@ export default function ItemList({
   dense = true,
   data = [],
   handleClick = () => {},
+  maxHeight = "10rem",
 }) {
   return (
-    <List dense={dense}>
+    <List dense={dense} sx={{ maxHeight: { maxHeight } }}>
       {data.map((d, index) => {
         return (
           <ListItem
@@ -26,9 +27,7 @@ export default function ItemList({
             }
           >
             <ListItemAvatar>
-              <Avatar>
-                {d?.icon}
-              </Avatar>
+              <Avatar>{d?.icon}</Avatar>
             </ListItemAvatar>
             <ListItemText
               primary={d?.primary ? d.primary : null}
