@@ -5,13 +5,13 @@ import {
   Switch,
   Typography,
 } from "@mui/material";
-import Row from "../../../../common/Row/Row";
 import {
   ArrowRightRounded,
   EventRepeatRounded,
   RepeatRounded,
   ReplayCircleFilledRounded,
 } from "@mui/icons-material";
+import Row from "../../../../common/Row/Row";
 
 export default function AddChoreFormRepeatSettings() {
   return (
@@ -70,7 +70,9 @@ export default function AddChoreFormRepeatSettings() {
               </Stack>
             </Stack>
           }
-          secondElement={<ArrowRightRounded fontSize="small" />}
+          secondElement={
+            <ArrowRightRounded sx={{ alignSelf: "center" }} fontSize="small" />
+          }
         />
       </Stack>
 
@@ -88,7 +90,9 @@ export default function AddChoreFormRepeatSettings() {
               </Stack>
             </Stack>
           }
-          secondElement={<ArrowRightRounded fontSize="small" />}
+          secondElement={
+            <ArrowRightRounded sx={{ alignSelf: "center" }} fontSize="small" />
+          }
         />
       </Stack>
     </Stack>
