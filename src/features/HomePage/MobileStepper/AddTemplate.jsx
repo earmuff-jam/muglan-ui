@@ -15,8 +15,8 @@ export default function AddTemplate({
         {titleText}
       </Typography>
       <Stack direction={"row"} spacing={1}>
-        {items.map((group) => (
-          <ItemCard item={group} />
+        {items.map((group, index) => (
+          <ItemCard key={index} item={group} />
         ))}
       </Stack>
     </Stack>

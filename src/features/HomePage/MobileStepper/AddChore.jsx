@@ -47,7 +47,7 @@ export default function AddChore() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (containsErr()) {
+    if (isFormDisabled()) {
       return;
     }
 
@@ -61,7 +61,10 @@ export default function AddChore() {
     const draftRequest = {
       ...formattedData,
     };
+    console.debug(draftRequest);
   };
+
+  console.debug(isFormDisabled, handleSubmit);
 
   return (
     <Stack spacing={2}>

@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, lightTheme } from "../src/utils/Theme";
-import { RouterProvider } from "react-router-dom";
 import { MemoryRouter } from "react-router-dom";
 
 const THEMES = {

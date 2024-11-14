@@ -1,5 +1,4 @@
-import { AddRounded } from "@mui/icons-material";
-import { Avatar, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Avatar, Stack, Typography } from "@mui/material";
 import IconButtonWithTooltip from "../IconButtonWithTooltip/IconButtonWithTooltip";
 
 export default function AvatarWithText({ salutation, handleAdd }) {

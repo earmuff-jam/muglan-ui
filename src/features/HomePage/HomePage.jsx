@@ -2,10 +2,9 @@ import dayjs from "dayjs";
 import ViewDateTime from "../../common/DateTimePicker/ViewDateTime";
 import AvatarWithText from "./AvatarWithText/AvatarWithText";
 import Row from "../../common/Row/Row";
-import { Typography } from "@mui/material";
 import TaskCompletion from "./TaskCompletion/TaskCompletion";
 import ItemList from "./ItemList/ItemList";
-import React, { useState } from "react";
+import { useState } from "react";
 import MobileStepper from "./MobileStepper/MobileStepper";
 import ModalWithConfirmationBox from "../../common/ModalWIthConfirmation/ModalWithConfirmationBox";
 

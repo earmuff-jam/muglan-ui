@@ -7,7 +7,6 @@ import {
   ListItemAvatar,
   ListItemButton,
   ListItemText,
-  Stack,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 

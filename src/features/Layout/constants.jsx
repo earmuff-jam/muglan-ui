@@ -1,5 +1,4 @@
 import {
-  EditRounded,
   Groups2Rounded,
   HomeRounded,
   Person2Rounded,
