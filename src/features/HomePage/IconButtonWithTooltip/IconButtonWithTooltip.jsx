@@ -1,5 +1,5 @@
-import { AddRounded } from "@mui/icons-material";
-import { IconButton, Tooltip } from "@mui/material";
+import { AddCircleOutlineRounded } from "@mui/icons-material";
+import { Box, IconButton, Tooltip } from "@mui/material";
 
 export default function IconButtonWithTooltip({
   tooltipTitle = "",
@@ -8,9 +8,11 @@ export default function IconButtonWithTooltip({
 }) {
   return (
     <Tooltip title={tooltipTitle} placement="bottom-start">
-      <IconButton size="small" disableRipple onClick={handleAdd}>
-        <AddRounded color={color} />
-      </IconButton>
+      <Box alignSelf={"center"}>
+        <IconButton size="small" onClick={handleAdd}>
+          <AddCircleOutlineRounded color={color} />
+        </IconButton>
+      </Box>
     </Tooltip>
   );
 }

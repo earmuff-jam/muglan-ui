@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, lightTheme } from "../src/utils/Theme";
+import { MemoryRouter } from "react-router-dom";
 
 const THEMES = {
   lightTheme: lightTheme,
@@ -16,10 +17,12 @@ export const decorators = [
     );
     return (
       <Box sx={{ padding: "2rem" }}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {story()}
-        </ThemeProvider>
+        <MemoryRouter>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {story()}
+          </ThemeProvider>
+        </MemoryRouter>
       </Box>
     );
   },

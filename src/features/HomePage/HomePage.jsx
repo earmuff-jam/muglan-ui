@@ -2,17 +2,20 @@ import dayjs from "dayjs";
 import ViewDateTime from "../../common/DateTimePicker/ViewDateTime";
 import AvatarWithText from "./AvatarWithText/AvatarWithText";
 import Row from "../../common/Row/Row";
-import { Typography } from "@mui/material";
 import TaskCompletion from "./TaskCompletion/TaskCompletion";
 import ItemList from "./ItemList/ItemList";
-import React from "react";
-
+import { useState } from "react";
+import MobileStepper from "./MobileStepper/MobileStepper";
+import ModalWithConfirmationBox from "../../common/ModalWIthConfirmation/ModalWithConfirmationBox";
 
 export default function HomePage() {
+  const [showAddStepper, setShowAddStepper] = useState(false);
 
+  const handleOpen = () => setShowAddStepper(true);
+  const handleClose = () => setShowAddStepper(false);
   return (
     <>
-      <AvatarWithText salutation="Good Evening, Rabin" handleAdd={() => {}} />
+      <AvatarWithText salutation="Good Evening, Rabin" handleAdd={handleOpen} />
       <Row
         marginTop={"2rem"}
         firstElement={
@@ -21,6 +24,16 @@ export default function HomePage() {
         secondElement={<TaskCompletion completionPercent={0} />}
       />
       <ItemList dense="true" data={[]} />
+      {showAddStepper && (
+        <ModalWithConfirmationBox
+          open={open}
+          handleClose={handleClose}
+          primaryButton={"Close"}
+          secondaryButton={"Submit"}
+        >
+          <MobileStepper />
+        </ModalWithConfirmationBox>
+      )}
     </>
   );
 }
